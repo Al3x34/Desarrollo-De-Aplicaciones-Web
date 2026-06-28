@@ -1,0 +1,66 @@
+/* Fuente general */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header */
+header h1 {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+/* Sección inicio */
+#inicio {
+    border-bottom: 3px solid #dee2e6;
+}
+
+/* Cards de servicios */
+.card {
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card-title {
+    font-weight: bold;
+    color: #222;
+}
+
+/* Imagen quiénes somos */
+#quienes-somos img {
+    max-height: 320px;
+    object-fit: cover;
+}
+
+/* Aside */
+aside {
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    font-size: 0.9rem;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    #inicio h2 {
+        font-size: 1.4rem;
+    }
+
+    .card {
+        margin-bottom: 10px;
+    }
+
+    aside {
+        text-align: center;
+    }
+}
