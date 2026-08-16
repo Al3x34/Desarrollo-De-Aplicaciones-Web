@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Servicios</h2>
+<p class="text-muted mb-4">Estos son los servicios que ofrecemos actualmente.</p>
+
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Mantenimiento</h5>
+                <p class="card-text">Mantenimiento preventivo y limpieza de hardware para que tu equipo dure mas tiempo.</p>
+                <span class="badge bg-secondary">Hardware</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Formateo y Respaldo</h5>
+                <p class="card-text">Formateo del sistema, respaldo de datos e instalacion del sistema operativo.</p>
+                <span class="badge bg-secondary">Sistema</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Software</h5>
+                <p class="card-text">Instalacion de programas, herramientas y optimizacion general del sistema.</p>
+                <span class="badge bg-secondary">Software</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Redes</h5>
+                <p class="card-text">Configuracion de redes, routers y cableado estructurado.</p>
+                <span class="badge bg-secondary">Redes</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Facturacion</h2>
+<p class="text-muted mb-4">Registro de facturas emitidas por servicios prestados.</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Cliente</th>
+                <th>Servicio</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001</td>
+                <td>Juan Perez</td>
+                <td>Mantenimiento</td>
+                <td>2026-07-01</td>
+                <td>$25.00</td>
+                <td><span class="badge bg-success">Pagado</span></td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>Maria Lopez</td>
+                <td>Formateo y Respaldo</td>
+                <td>2026-07-05</td>
+                <td>$35.00</td>
+                <td><span class="badge bg-success">Pagado</span></td>
+            </tr>
+            <tr>
+                <td>003</td>
+                <td>Carlos Rios</td>
+                <td>Redes</td>
+                <td>2026-07-10</td>
+                <td>$40.00</td>
+                <td><span class="badge bg-warning text-dark">Pendiente</span></td>
+            </tr>
+            <tr>
+                <td>004</td>
+                <td>Ana Torres</td>
+                <td>Software</td>
+                <td>2026-07-15</td>
+                <td>$20.00</td>
+                <td><span class="badge bg-success">Pagado</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
