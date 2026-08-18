@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Tecnicos{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-2">Tecnicos</h2>
+<p class="text-muted mb-4">Tecnicos disponibles para atender solicitudes.</p>
+
+<div class="row g-4">
+    {% for t in tecnicos %}
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ t.nombre }}</h5>
+                <p class="card-text text-muted">Especialidad: {{ t.especialidad }}</p>
+                {% if t.disponible %}
+                    <span class="badge bg-success">Disponible</span>
+                {% else %}
+                    <span class="badge bg-danger">No disponible</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
