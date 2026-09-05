@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Nuevo Servicio{% endblock %}
+{% block content %}
+
+<h2 class="mb-4">Registrar Servicio</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                {{ form.nombre.label(class="form-label") }}
+                {{ form.nombre(class="form-control") }}
+                {% for error in form.nombre.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.descripcion.label(class="form-label") }}
+                {{ form.descripcion(class="form-control") }}
+                {% for error in form.descripcion.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.categoria.label(class="form-label") }}
+                {{ form.categoria(class="form-select") }}
+                {% for error in form.categoria.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            {{ form.submit(class="btn btn-dark") }}
+            <a href="{{ url_for('servicios') }}" class="btn btn-outline-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

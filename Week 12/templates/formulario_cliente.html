@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Nuevo Cliente{% endblock %}
+{% block content %}
+
+<h2 class="mb-4">Registrar Cliente</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                {{ form.nombre.label(class="form-label") }}
+                {{ form.nombre(class="form-control") }}
+                {% for error in form.nombre.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.correo.label(class="form-label") }}
+                {{ form.correo(class="form-control") }}
+                {% for error in form.correo.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.telefono.label(class="form-label") }}
+                {{ form.telefono(class="form-control") }}
+                {% for error in form.telefono.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            {{ form.submit(class="btn btn-dark") }}
+            <a href="{{ url_for('clientes') }}" class="btn btn-outline-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

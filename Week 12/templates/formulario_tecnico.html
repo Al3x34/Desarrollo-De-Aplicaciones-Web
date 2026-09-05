@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Nuevo Tecnico{% endblock %}
+{% block content %}
+
+<h2 class="mb-4">Registrar Tecnico</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                {{ form.nombre.label(class="form-label") }}
+                {{ form.nombre(class="form-control") }}
+                {% for error in form.nombre.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.especialidad.label(class="form-label") }}
+                {{ form.especialidad(class="form-select") }}
+                {% for error in form.especialidad.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            {{ form.submit(class="btn btn-dark") }}
+            <a href="{{ url_for('tecnicos') }}" class="btn btn-outline-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

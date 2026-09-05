@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Nueva Factura{% endblock %}
+{% block content %}
+
+<h2 class="mb-4">Registrar Factura</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                {{ form.cliente.label(class="form-label") }}
+                {{ form.cliente(class="form-control") }}
+                {% for error in form.cliente.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.servicio.label(class="form-label") }}
+                {{ form.servicio(class="form-control") }}
+                {% for error in form.servicio.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.total.label(class="form-label") }}
+                {{ form.total(class="form-control") }}
+                {% for error in form.total.errors %}
+                    <div class="text-danger small mt-1">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            {{ form.submit(class="btn btn-dark") }}
+            <a href="{{ url_for('facturacion') }}" class="btn btn-outline-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

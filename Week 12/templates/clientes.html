@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Clientes{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Clientes</h2>
+    <a href="{{ url_for('nuevo_cliente') }}" class="btn btn-dark">+ Nuevo cliente</a>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+{% endwith %}
+
+{% if clientes %}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in clientes %}
+            <tr>
+                <td>{{ c['id'] }}</td>
+                <td>{{ c['nombre'] }}</td>
+                <td>{{ c['correo']|lower }}</td>
+                <td>{{ c['telefono'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-muted">No hay clientes registrados aun. Agrega el primero.</p>
+{% endif %}
+
+{% endblock %}

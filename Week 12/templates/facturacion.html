@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Facturacion{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Facturacion</h2>
+    <a href="{{ url_for('nueva_factura') }}" class="btn btn-dark">+ Nueva factura</a>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+{% endwith %}
+
+{% if facturas %}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Cliente</th>
+                <th>Servicio</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for f in facturas %}
+            <tr>
+                <td>{{ f['id'] }}</td>
+                <td>{{ f['cliente'] }}</td>
+                <td>{{ f['servicio'] }}</td>
+                <td>${{ f['total'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-muted">No hay facturas registradas aun. Agrega la primera.</p>
+{% endif %}
+
+{% endblock %}
