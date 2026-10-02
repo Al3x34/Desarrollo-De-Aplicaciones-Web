@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import campo %}
+{% block title %}{{ titulo }}{% endblock %}
+{% block content %}
+
+<h2 class="mb-4">{{ titulo }}</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            {{ campo(form.cliente_id, 'form-select') }}
+            {{ campo(form.servicio_id, 'form-select') }}
+            {{ campo(form.tecnico_id, 'form-select') }}
+            {{ campo(form.fecha) }}
+            {{ campo(form.total) }}
+            <p class="small text-muted">Al elegir un servicio, el total se completa con su precio (puedes modificarlo).</p>
+            {{ form.submit(class="btn btn-dark") }}
+            <a href="{{ url_for('facturacion') }}" class="btn btn-outline-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Precios de los servicios (id: precio) usados por script.js para autocompletar el total
+    var preciosServicios = {{ precios|tojson }};
+</script>
+
+{% endblock %}

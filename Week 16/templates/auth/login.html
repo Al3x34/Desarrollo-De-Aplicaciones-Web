@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import campo %}
+{% block title %}Iniciar sesion{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-4 text-center">Iniciar sesion</h2>
+                <form method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                    {{ campo(form.usuario) }}
+                    {{ campo(form.password) }}
+                    <div class="form-check mb-3">
+                        {{ form.recordar(class="form-check-input") }}
+                        {{ form.recordar.label(class="form-check-label") }}
+                    </div>
+                    {{ form.submit(class="btn btn-dark w-100") }}
+                </form>
+                <p class="text-center mt-3 mb-0 small">¿No tienes cuenta? <a href="{{ url_for('registro') }}">Registrate aqui</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import botones_accion %}
+{% block title %}Tecnicos{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Tecnicos</h2>
+    <a href="{{ url_for('nuevo_tecnico') }}" class="btn btn-dark">+ Nuevo tecnico</a>
+</div>
+
+{% if tecnicos %}
+<div class="row g-4">
+    {% for t in tecnicos %}
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ t['nombre'] }}</h5>
+                <p class="card-text text-muted mb-1">Especialidad: {{ t['especialidad'] }}</p>
+                <p class="card-text small">Servicios facturados: <strong>{{ t['num_facturas'] }}</strong></p>
+                {{ botones_accion(url_for('editar_tecnico', id=t['id']), url_for('eliminar_tecnico', id=t['id']), t['nombre']) }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-muted">No hay tecnicos registrados aun. Agrega el primero.</p>
+{% endif %}
+
+{% endblock %}

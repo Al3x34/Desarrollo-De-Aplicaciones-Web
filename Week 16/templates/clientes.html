@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import botones_accion %}
+{% block title %}Clientes{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Clientes</h2>
+    <a href="{{ url_for('nuevo_cliente') }}" class="btn btn-dark">+ Nuevo cliente</a>
+</div>
+
+{% if clientes %}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+            <tr><th>#</th><th>Nombre</th><th>Correo</th><th>Telefono</th><th>Facturas</th><th class="text-center">Acciones</th></tr>
+        </thead>
+        <tbody>
+            {% for c in clientes %}
+            <tr>
+                <td>{{ c['id'] }}</td>
+                <td>{{ c['nombre'] }}</td>
+                <td>{{ c['correo']|lower }}</td>
+                <td>{{ c['telefono'] }}</td>
+                <td><span class="badge bg-info text-dark">{{ c['num_facturas'] }}</span></td>
+                <td class="text-center text-nowrap">
+                    {{ botones_accion(url_for('editar_cliente', id=c['id']), url_for('eliminar_cliente', id=c['id']), c['nombre']) }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-muted">No hay clientes registrados aun. Agrega el primero.</p>
+{% endif %}
+
+{% endblock %}

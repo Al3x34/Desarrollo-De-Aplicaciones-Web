@@ -1,0 +1,19 @@
+{# Macros reutilizables para formularios y botones #}
+
+{% macro campo(field, clase='form-control') %}
+<div class="mb-3">
+    {{ field.label(class="form-label") }}
+    {{ field(class=clase ~ (' is-invalid' if field.errors else '')) }}
+    {% for error in field.errors %}
+        <div class="invalid-feedback d-block">{{ error }}</div>
+    {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro botones_accion(url_editar, url_eliminar, nombre) %}
+<a href="{{ url_editar }}" class="btn btn-sm btn-outline-primary">Editar</a>
+<form method="POST" action="{{ url_eliminar }}" class="d-inline form-eliminar" data-nombre="{{ nombre }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+</form>
+{% endmacro %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import botones_accion %}
+{% block title %}Facturacion{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Facturacion</h2>
+    <a href="{{ url_for('nueva_factura') }}" class="btn btn-dark">+ Nueva factura</a>
+</div>
+
+{% if facturas %}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+            <tr><th>#</th><th>Fecha</th><th>Cliente</th><th>Servicio</th><th>Tecnico</th><th>Total</th><th class="text-center">Acciones</th></tr>
+        </thead>
+        <tbody>
+            {% for f in facturas %}
+            <tr>
+                <td>{{ f['id'] }}</td>
+                <td>{{ f['fecha'] }}</td>
+                <td>{{ f['cliente'] }}</td>
+                <td>{{ f['servicio'] }} <span class="badge bg-secondary">{{ f['categoria'] }}</span></td>
+                <td>{{ f['tecnico'] }}</td>
+                <td>${{ '%.2f'|format(f['total']) }}</td>
+                <td class="text-center text-nowrap">
+                    {{ botones_accion(url_for('editar_factura', id=f['id']), url_for('eliminar_factura', id=f['id']), 'la factura #' ~ f['id']) }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-muted">No hay facturas registradas aun. Agrega la primera.</p>
+{% endif %}
+
+{% endblock %}

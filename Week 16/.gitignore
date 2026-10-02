@@ -1,0 +1,6 @@
+# Base de datos local (se crea sola al ejecutar app.py)
+data/*.db
+__pycache__/
+*.pyc
+venv/
+.venv/

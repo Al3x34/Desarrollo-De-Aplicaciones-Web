@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import campo %}
+{% block title %}{{ titulo }}{% endblock %}
+{% block content %}
+
+<h2 class="mb-4">{{ titulo }}</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            {{ campo(form.nombre) }}
+            {{ campo(form.correo) }}
+            {{ campo(form.telefono) }}
+            {{ form.submit(class="btn btn-dark") }}
+            <a href="{{ url_for('clientes') }}" class="btn btn-outline-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

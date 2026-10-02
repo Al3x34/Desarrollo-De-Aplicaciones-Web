@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "components/macros.html" import campo %}
+{% block title %}Registro{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-4 text-center">Crear cuenta</h2>
+                <form method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                    {{ campo(form.nombre) }}
+                    {{ campo(form.usuario) }}
+                    {{ campo(form.password) }}
+                    {{ campo(form.confirmar) }}
+                    {{ form.submit(class="btn btn-dark w-100") }}
+                </form>
+                <p class="text-center mt-3 mb-0 small">¿Ya tienes cuenta? <a href="{{ url_for('login') }}">Inicia sesion</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

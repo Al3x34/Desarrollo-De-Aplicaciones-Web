@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Panel{% endblock %}
+{% block content %}
+
+<h2 class="mb-4">Panel de gestion</h2>
+
+<div class="row g-4 mb-5">
+    <div class="col-6 col-lg">
+        <a href="{{ url_for('servicios') }}" class="text-decoration-none">
+            <div class="card shadow-sm text-center h-100"><div class="card-body">
+                <p class="text-muted mb-1">Servicios</p><p class="display-6 mb-0">{{ totales.servicios }}</p>
+            </div></div>
+        </a>
+    </div>
+    <div class="col-6 col-lg">
+        <a href="{{ url_for('clientes') }}" class="text-decoration-none">
+            <div class="card shadow-sm text-center h-100"><div class="card-body">
+                <p class="text-muted mb-1">Clientes</p><p class="display-6 mb-0">{{ totales.clientes }}</p>
+            </div></div>
+        </a>
+    </div>
+    <div class="col-6 col-lg">
+        <a href="{{ url_for('tecnicos') }}" class="text-decoration-none">
+            <div class="card shadow-sm text-center h-100"><div class="card-body">
+                <p class="text-muted mb-1">Tecnicos</p><p class="display-6 mb-0">{{ totales.tecnicos }}</p>
+            </div></div>
+        </a>
+    </div>
+    <div class="col-6 col-lg">
+        <a href="{{ url_for('facturacion') }}" class="text-decoration-none">
+            <div class="card shadow-sm text-center h-100"><div class="card-body">
+                <p class="text-muted mb-1">Facturas</p><p class="display-6 mb-0">{{ totales.facturas }}</p>
+            </div></div>
+        </a>
+    </div>
+    <div class="col-12 col-lg">
+        <div class="card shadow-sm text-center h-100 border-success"><div class="card-body">
+            <p class="text-muted mb-1">Ingresos totales</p><p class="display-6 mb-0">${{ '%.2f'|format(totales.ingresos) }}</p>
+        </div></div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="h5 mb-0">Ultimas facturas</h3>
+    <a href="{{ url_for('nueva_factura') }}" class="btn btn-dark btn-sm">+ Nueva factura</a>
+</div>
+
+{% if ultimas %}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr><th>#</th><th>Fecha</th><th>Cliente</th><th>Servicio</th><th>Tecnico</th><th>Total</th></tr>
+        </thead>
+        <tbody>
+            {% for f in ultimas %}
+            <tr>
+                <td>{{ f['id'] }}</td>
+                <td>{{ f['fecha'] }}</td>
+                <td>{{ f['cliente'] }}</td>
+                <td>{{ f['servicio'] }}</td>
+                <td>{{ f['tecnico'] }}</td>
+                <td>${{ '%.2f'|format(f['total']) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-muted">Todavia no hay facturas registradas.</p>
+{% endif %}
+
+{% endblock %}

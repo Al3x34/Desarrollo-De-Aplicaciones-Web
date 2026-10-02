@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{{ url_for('index') }}">TechFix</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+            {% set ruta = request.endpoint or '' %}
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link {% if ruta == 'index' %}active{% endif %}" href="{{ url_for('index') }}">Inicio</a></li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link {% if ruta == 'panel' %}active{% endif %}" href="{{ url_for('panel') }}">Panel</a></li>
+                <li class="nav-item"><a class="nav-link {% if 'servicio' in ruta %}active{% endif %}" href="{{ url_for('servicios') }}">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link {% if 'cliente' in ruta %}active{% endif %}" href="{{ url_for('clientes') }}">Clientes</a></li>
+                <li class="nav-item"><a class="nav-link {% if 'tecnico' in ruta %}active{% endif %}" href="{{ url_for('tecnicos') }}">Tecnicos</a></li>
+                <li class="nav-item"><a class="nav-link {% if 'factura' in ruta %}active{% endif %}" href="{{ url_for('facturacion') }}">Facturacion</a></li>
+                {% endif %}
+            </ul>
+            <div class="d-flex align-items-center gap-2">
+                {% if current_user.is_authenticated %}
+                    <span class="text-white small">Usuario: <strong>{{ current_user.nombre }}</strong></span>
+                    <form method="POST" action="{{ url_for('logout') }}" class="mb-0">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="btn btn-sm btn-outline-light">Cerrar sesion</button>
+                    </form>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn btn-sm btn-light">Iniciar sesion</a>
+                    <a href="{{ url_for('registro') }}" class="btn btn-sm btn-outline-light">Registrarse</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
