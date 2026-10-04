@@ -5,6 +5,12 @@ Desarrollado con **Flask**, **Jinja2**, **Flask-WTF**, **Flask-Login** y **SQLit
 
 **Autor:** Steven Castro - Desarrollo de Aplicaciones Web - 2026
 
+## Video de demostración
+
+[Ver el video del funcionamiento del sistema](https://ueaeduec-my.sharepoint.com/:v:/g/personal/sa_castrov_uea_edu_ec/IQApUzayf7rBQpOmv0vrH_WHAZhhek0cJFNjahDFd9FIqo4?e=f8PTfn&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
+El video muestra la navegación del sistema, el login, el CRUD de las tablas relacionadas y una explicación general del funcionamiento.
+
 ## Funcionalidades
 
 - **Login y autenticación**: registro de usuarios, inicio y cierre de sesión con Flask-Login.
